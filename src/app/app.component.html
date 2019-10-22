@@ -1,0 +1,43 @@
+<header>
+    <h1>User`s phonebook</h1>
+</header>
+<form (ngSubmit)="createNumber(); resetCreateForm(); selectedAction = 'none'" name="create" *ngIf="selectedAction == 'create'">
+  <input [class.in1] = "true" type="text" max="15" placeholder="Name" name="name" [(ngModel)]="data.name">
+  <input [class.in1] = "true" type="text" max="15" placeholder="Phone number" name="number" [(ngModel)]="data.number">
+<div [class.div1] = "true">
+  <input type="submit" value="+">
+  <button (click)="resetCreateForm(); selectedAction = 'none'">x</button>
+</div> 
+</form>
+
+<form (ngSubmit)="editNumber(); resetEditForm(); selectedAction = 'none'" name="edit" *ngIf="selectedAction == 'edit'">
+  <input [class.in1] = "true" type="text" max="15" placeholder="Name" name="editname" [(ngModel)]="editnumber.name">
+  <input [class.in1] = "true" type="text" max="15" placeholder="Phone number" name="editnumber" [(ngModel)]="editnumber.number">
+<div [class.div1] = "true"> 
+  <input type="submit" value="/">
+  <button (click)="resetEditForm(); selectedAction = 'none'">x</button>
+</div> 
+</form>
+
+<div>
+<button [class.but1] = "true" (click)="selectedAction = 'create'">Add new contact</button>
+</div>
+
+<table>
+  <thead>
+    <th>Name</th>
+    <th>Action</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let l of arr">
+      <td (click)="l.show = !l.show">
+        {{l.name}}
+        <span *ngIf="l.show">{{l.number}}</span>
+      </td>
+      <td>
+        <button [class.but1] = "true" (click)="changeNumber(l.id, l.name, l.number); selectedAction = 'edit'">/</button>
+        <button [class.but1] = "true" (click)="deleteNumber(l.id)">x</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
