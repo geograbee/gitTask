@@ -32,3 +32,4 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 2. Install Angular CLI.
 3. Open the "task" directory in the terminal.
 4. Use "ng serve -o" command to run the project.
+P. S.: The folder is too large (many files and folders), so it could not boot to github.
